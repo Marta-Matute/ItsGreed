@@ -1,38 +1,55 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.logo-box {
+  width: 100vw;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.options-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.options-button {
+  background-color: #eaeaea; /* Gray */
+  border: 4px;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  &:hover{
+    background-color: rgb(221, 221, 221);
   }
 }
+.logo {
+  width: 400px;
+}
+
+.players-box {
+  display: flex;
+}
+
+.plus-circle {
+  width: 75px;
+  height: 232px;
+  display: flex;
+  align-items: center;
+}
+
+@font-face {
+  font-family: 'CooperBlack';
+  src: url('../public/fonts/COOPBL.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
