@@ -7,6 +7,10 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  >svg{
+    width: 400px;
+    height: 200px;
+  }
 }
 
 .options-box {
@@ -16,22 +20,28 @@
 }
 
 .options-button {
-  background-color: #eaeaea; /* Gray */
-  border: 4px;
+  background-color: transparent; /* White */
+  border: 4px solid #ffffff;
   cursor: pointer;
   margin: 10px;
   border-radius: 5px;
-  color: rgb(0, 0, 0);
+  color:#ffffff;
+  width: 160px;
+  height: 60px;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: bold;
   &:hover{
-    background-color: rgb(221, 221, 221);
+    border-color: #4d442e;
+    color: #4d442e;
   }
 }
 .logo {
+  fill: white;
+  stroke: white;
   width: 400px;
 }
 

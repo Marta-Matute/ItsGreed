@@ -1,15 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import logo from "./images/its-greeed.svg";
+import { useContext, useState } from "react";
 import "./App.css";
 import "./components/Players/components/player.css";
 import ConfirmationPopup from "./components/Popup/ConfirmationPopup";
 import { Players } from "./components/Players/Players";
 import { defaultPlayers, PlayersContext } from "./state/context";
+import RulesPopup from "./components/Popup/RulesPopup";
+import { GreedLogo } from "./components/GreedLogo";
 
 function App() {
   const [isRestartingGame, setIsRestartingGame] = useState(false);
   const playersContext = useContext(PlayersContext);
   const [showNewGamePopup, setShowNewGamePopup] = useState(false);
+  const [showRulesPopup, setShowRulesPopup] = useState(false);
 
   if (!playersContext) {
     // Handle the case where the context is undefined
@@ -40,12 +42,17 @@ function App() {
 
   return (
     <div className="App">
+      {/* Include the CurvedPath component */}
       <div className="logo-box">
-        <img className="logo" src={logo} alt="it's greeeed" />
+        {/* <img className="logo" src={logo} alt="it's greeeed" />*/}
+        <GreedLogo fill="white" />
       </div>
       <div className="options-box">
         <button className="options-button" onClick={handleNewGame}>
           New game
+        </button>
+        <button className="options-button" onClick={() => setShowRulesPopup(true)}>
+          Rules
         </button>
       </div>
 
@@ -60,6 +67,7 @@ function App() {
           onCancel={() => setShowNewGamePopup(false)}
         />
       )}
+      {showRulesPopup && <RulesPopup onClose={() => setShowRulesPopup(false)} />}
     </div>
   );
 }

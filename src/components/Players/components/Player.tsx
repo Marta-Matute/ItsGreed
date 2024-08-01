@@ -140,6 +140,7 @@ function Player({ player }: PlayerProps) {
       </p>
 
       <input
+        className="score-input"
         placeholder="New Score"
         type="number"
         onKeyUp={addScoreValue}

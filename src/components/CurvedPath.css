@@ -1,0 +1,20 @@
+.curved-text-container {
+    border: 2px solid black;
+    width: 300px; /* Ensure the container has a defined width */
+    height: 150px; /* Ensure the container has a defined height */
+    margin: 20px auto; /* Center the container */
+    font-family: "CooperBlack";
+  }
+  
+  .curved-text {
+    font-size: 70px; /* Adjust the font size as needed */
+    fill: #000; /* Text color */
+  }
+  
+
+  @font-face {
+    font-family: 'CooperBlack';
+    src: url('~/public/fonts/COOPBL.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

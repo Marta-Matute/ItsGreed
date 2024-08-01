@@ -9,14 +9,16 @@
   width: 22px;
   margin-left: auto;
   cursor:pointer;
+  color: white;
   &:hover{
-    stroke :#747474
+    stroke :#4d442e
   }
 }
 
 .big-icon {
   width: 50px;
   height: 50px;
+  color: white;
 }
 
 .score-instance{
@@ -53,26 +55,44 @@
   font-size : 40px;
   font-family: 'CooperBlack', sans-serif;
   border: 1px solid transparent;
-  color: rgb(0, 0, 0);
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   cursor: pointer;
   width: 178px;
 }
 
 .player-name-focused {
   /* Add your focused state styling here */
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   background: white;
   width: 178px;
   font-size: 40px;
   font-family: 'CooperBlack';
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 
 .total-score{
   margin: 12px 0px;
   font-size: 50px;
-  font-family: 'CooperBlack', sans-serif
+  font-family: 'CooperBlack', sans-serif;
+  color: white;
+}
+
+input[type="number"]:focus {
+  border-color: #ffffff; /* Change border color on focus */
+}
+
+input[type="number"]::placeholder {
+  color: #ffffff; /* Set placeholder text color */
+}
+
+.score-input{
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  stroke: rgb(255, 255, 255);
+  height: 20px;
 }
 
 
