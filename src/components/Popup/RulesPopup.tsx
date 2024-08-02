@@ -1,5 +1,6 @@
 import React from "react";
 import "./rulesPopup.css";
+import { X } from "react-feather";
 
 type RulesPopupProps = {
   onClose: () => void;
@@ -8,7 +9,8 @@ type RulesPopupProps = {
 const RulesPopup: React.FC<RulesPopupProps> = ({ onClose }) => {
   return (
     <div className="popup-overlay">
-      <div className="popup-content rules-popup">
+      <div className="rules-popup-content rules-popup">
+        <X className="x-icon" onClick={onClose} />
         <h2>Basic Rules</h2>
         <p>Setup: Each player takes turns rolling six dice.</p>
         <p>Rolling: On a player's turn, they roll all six dice.</p>

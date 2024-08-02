@@ -1,40 +1,58 @@
-import { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Player from "./components/Player";
-import { PlusSquare } from "react-feather";
-import { playerFactory, PlayersContext } from "../../state/context";
+import { PlayersContext } from "../../state/context";
+import VictoryPopup from "../Popup/VictoryPopup";
 
-type PlayersProps = {
-  isRestartingGame: boolean;
+type Player = {
+  name: string;
+  index: number;
+  totalScore: number;
+  allScores: number[];
 };
 
-export const Players = ({ isRestartingGame }: PlayersProps) => {
+export const Players = () => {
   const playersContext = useContext(PlayersContext);
+  const [winner, setWinner] = useState<string | null>(null);
+  const [showVictoryPopup, setShowVictoryPopup] = useState(false);
+
+  const findWinner = (players: Player[]): void => {
+    const allScoresLength = players[0].allScores.length;
+    const allSameLength = players.every((player) => player.allScores.length === allScoresLength);
+
+    if (allSameLength) {
+      // Find the player with the highest score
+      const highestScoringPlayer = players.reduce((maxPlayer, player) => {
+        return player.totalScore > maxPlayer.totalScore ? player : maxPlayer;
+      });
+
+      // Check if the highest score is greater than 10000
+      if (highestScoringPlayer.totalScore > 10000) {
+        setWinner(highestScoringPlayer.name);
+        setShowVictoryPopup(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (playersContext) {
+      findWinner(playersContext.players);
+    }
+  }, [playersContext]);
 
   if (!playersContext) {
     // Handle the case where the context is undefined
     return <div>Loading...</div>;
   }
-  const { players, setPlayers } = playersContext;
 
-  const addPlayer = () => {
-    // The index starts at 0, but for everything else (player name, etc) we want it to start at 1
-    const newPlayerIndex = players[players.length - 1].index + 1;
-
-    const newPlayer = playerFactory({ index: newPlayerIndex });
-    setPlayers((players) => [...players, newPlayer]);
-  };
+  const { players } = playersContext;
 
   return (
     <div className="players-box" id="players-box">
-      {players?.map((player, i) => {
-        return <Player key={`player-${i}`} player={player} />;
-      })}
+      {players?.map((player, i) => <Player key={`player-${i}`} player={player} />)}
 
-      {!isRestartingGame && (
-        <div className="plus-circle">
-          <PlusSquare className="gray-icon big-icon" onClick={addPlayer}></PlusSquare>
-        </div>
-      )}
+      {showVictoryPopup && <VictoryPopup message={`${winner}`} onClose={() => setShowVictoryPopup(false)} />}
     </div>
   );
 };
+
+export default Players;

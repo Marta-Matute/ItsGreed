@@ -1,17 +1,13 @@
 import { useContext, useState } from "react";
 import "./App.css";
 import "./components/Players/components/player.css";
-import ConfirmationPopup from "./components/Popup/ConfirmationPopup";
 import { Players } from "./components/Players/Players";
-import { defaultPlayers, PlayersContext } from "./state/context";
-import RulesPopup from "./components/Popup/RulesPopup";
+import { playerFactory, PlayersContext } from "./state/context";
 import { GreedLogo } from "./components/GreedLogo";
+import Header from "./components/Header"; // Import the Header component
 
 function App() {
-  const [isRestartingGame, setIsRestartingGame] = useState(false);
   const playersContext = useContext(PlayersContext);
-  const [showNewGamePopup, setShowNewGamePopup] = useState(false);
-  const [showRulesPopup, setShowRulesPopup] = useState(false);
 
   if (!playersContext) {
     // Handle the case where the context is undefined
@@ -19,55 +15,29 @@ function App() {
   }
   const { players, setPlayers } = playersContext;
 
-  const confirmNewGame = () => {
-    setShowNewGamePopup(true);
-  };
+  const addPlayer = () => {
+    // The index starts at 0, but for everything else (player name, etc) we want it to start at 1
+    const newPlayerIndex = players[players.length - 1].index + 1;
 
-  const restartGame = () => {
-    setShowNewGamePopup(false);
-    setIsRestartingGame(true);
-
-    setPlayers([]);
-
-    setTimeout(() => {
-      setPlayers(defaultPlayers);
-      setIsRestartingGame(false);
-    }, 1000);
-  };
-
-  const handleNewGame = () => {
-    // alert("Are you sure you want to start a new game? Any previous scores and players will be deleted");
-    confirmNewGame();
+    const newPlayer = playerFactory({ index: newPlayerIndex });
+    setPlayers((players) => [...players, newPlayer]);
   };
 
   return (
     <div className="App">
-      {/* Include the CurvedPath component */}
+      <Header />
       <div className="logo-box">
-        {/* <img className="logo" src={logo} alt="it's greeeed" />*/}
-        <GreedLogo fill="white" />
-      </div>
-      <div className="options-box">
-        <button className="options-button" onClick={handleNewGame}>
-          New game
-        </button>
-        <button className="options-button" onClick={() => setShowRulesPopup(true)}>
-          Rules
-        </button>
+        <GreedLogo fill="rgb(255,152,0)" />
       </div>
 
-      {isRestartingGame && <div>Cleaning Board...</div>}
+      <Players />
 
-      <Players isRestartingGame={isRestartingGame} />
-
-      {showNewGamePopup && (
-        <ConfirmationPopup
-          message="Are you sure you want to start a new game?"
-          onConfirm={restartGame}
-          onCancel={() => setShowNewGamePopup(false)}
-        />
-      )}
-      {showRulesPopup && <RulesPopup onClose={() => setShowRulesPopup(false)} />}
+      <div className="add-player-box">
+        {/*<PlusSquare className="add-player-icon big-icon" onClick={addPlayer}></PlusSquare>*/}
+        <div className="add-player-icon" onClick={addPlayer}>
+          Add Player
+        </div>
+      </div>
     </div>
   );
 }

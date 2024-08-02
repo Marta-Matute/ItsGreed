@@ -1,5 +1,3 @@
-import "./CurvedPath.css"; // Ensure this CSS file exists for styles
-
 type GreedLogoProps = {
   fill?: string;
   stroke?: string;

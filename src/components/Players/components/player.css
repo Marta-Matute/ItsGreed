@@ -3,27 +3,33 @@
   flex-direction: column;
   padding: 15px;
   width: fit-content;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, and color */
+  border-radius: 5px;
 }
 
 .gray-icon {
   width: 22px;
   margin-left: auto;
   cursor:pointer;
-  color: white;
+  color: var(--primary-color);
   &:hover{
-    stroke :#4d442e
+    stroke :var(--hover-color);
   }
 }
 
 .big-icon {
   width: 50px;
   height: 50px;
-  color: white;
+  color:var(--primary-color);
 }
 
 .score-instance{
   display: flex;
   align-items: center;
+  font-size: 20px;
+  color:var(--primary-color);
 
   &:hover {
     > svg {
@@ -41,7 +47,7 @@
     width: 22px;
     cursor:pointer;
     :hover{
-      stroke :#747474
+      stroke :var(--hover-color);
     }
   }
 
@@ -54,21 +60,21 @@
 .player-name {
   font-size : 40px;
   font-family: 'CooperBlack', sans-serif;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   background-color: transparent;
-  color: rgb(255, 255, 255);
+  color:var(--primary-color);
   cursor: pointer;
   width: 178px;
 }
 
 .player-name-focused {
   /* Add your focused state styling here */
-  border: 1px solid rgb(255, 255, 255);
-  background: white;
+  border: 1px solid none;
+  background: none;
   width: 178px;
   font-size: 40px;
   font-family: 'CooperBlack';
-  color: rgb(255, 255, 255);
+  color: var(--primary-color);
 }
 
 
@@ -76,22 +82,22 @@
   margin: 12px 0px;
   font-size: 50px;
   font-family: 'CooperBlack', sans-serif;
-  color: white;
+  color: var(--primary-color);
 }
 
 input[type="number"]:focus {
-  border-color: #ffffff; /* Change border color on focus */
+  border-color:var(--primary-color); /* Change border color on focus */
 }
 
 input[type="number"]::placeholder {
-  color: #ffffff; /* Set placeholder text color */
+  color: var(--primary-color); /* Set placeholder text color */
 }
 
 .score-input{
   background-color: transparent;
-  border: 2px solid rgb(255, 255, 255);
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
-  stroke: rgb(255, 255, 255);
+  stroke: var(--primary-color);
   height: 20px;
 }
 

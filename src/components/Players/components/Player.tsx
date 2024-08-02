@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useState } from "react";
 import "./player.css";
 import { Trash2, Edit3 } from "react-feather";
 import PlayerNameInput from "./PlayerNameInput";
-import Popup from "../../Popup/AlertPopup";
+import AlertPopup from "../../Popup/AlertPopup";
 import { PlayersContext, PlayerType } from "../../../state/context";
 
 type PlayerProps = {
@@ -29,8 +29,8 @@ function Player({ player }: PlayerProps) {
       const newScore = Number((e.target as HTMLInputElement).value);
       if (setPlayers) {
         setPlayers((players) => {
-          const updatedPlayers = players.map((player, i) => {
-            if (i === index) {
+          const updatedPlayers = players.map((player) => {
+            if (player.index === index) {
               const newTotalScore = player.totalScore + newScore;
 
               const updatedPlayer = {
@@ -118,14 +118,13 @@ function Player({ player }: PlayerProps) {
   return (
     <div className="player" id={playerId}>
       <Trash2 className="gray-icon" onClick={deletePlayer}></Trash2>
-
       <div>
         <PlayerNameInput name={name} index={index} setName={setName} />
       </div>
-
       <p className="total-score">
         <span style={{ fontSize: "0.6em" }}>
           {player.rank != null &&
+            player.totalScore > 0 &&
             (player.rank === 0
               ? "🥇"
               : player.rank === players.length - 1
@@ -138,7 +137,6 @@ function Player({ player }: PlayerProps) {
         </span>
         {totalScore}
       </p>
-
       <input
         className="score-input"
         placeholder="New Score"
@@ -148,13 +146,12 @@ function Player({ player }: PlayerProps) {
         value={inputValue}
         onChange={setInputValueHandler}
       />
-
       <div>
-        {allScores.map((score, i) => {
+        {[...allScores].reverse().map((score, i) => {
           const deleteScoreValue = () => {
-            const updatedPlayers = players.map((player, j) => {
-              if (j === index) {
-                const newScores = player.allScores.filter((_, scrIdx) => scrIdx !== i);
+            const updatedPlayers = players.map((player) => {
+              if (player.index === index) {
+                const newScores = [...player.allScores].reverse().filter((_, scrIdx) => scrIdx !== i);
                 return { ...player, allScores: newScores, totalScore: totalScore - score };
               }
 
@@ -174,7 +171,7 @@ function Player({ player }: PlayerProps) {
           );
         })}
       </div>
-      {showPopup && <Popup message="You need at least two players" onClose={() => setShowPopup(false)} />}
+      {showPopup && <AlertPopup message="You need at least one player" onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
