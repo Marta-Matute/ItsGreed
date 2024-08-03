@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Header.css";
 import RulesPopup from "../components/Popup/RulesPopup";
 import dice from "../images/small-logo.svg";
+import dice2 from "../images/small-logo2.svg";
 import ConfirmationPopup from "./Popup/ConfirmationPopup";
 import { defaultPlayers, PlayersContext } from "../state/context";
 
@@ -24,7 +25,8 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="logo-container">
-        <img src={dice} alt="It's Greeed" className="logo" />
+        {/*<img src={dice} alt="It's Greeed" className="logo" />*/}
+        <img src={dice2} alt="It's Greeed" className="logo" />
       </div>
       <div className="actions">
         <button className="action-button" onClick={() => setShowNewGamePopup(true)}>

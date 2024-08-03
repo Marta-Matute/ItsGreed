@@ -6,6 +6,15 @@ import { playerFactory, PlayersContext } from "./state/context";
 import { GreedLogo } from "./components/GreedLogo";
 import Header from "./components/Header"; // Import the Header component
 
+/* TO DO 
+- refactor popups css files (combine them together)
+- implement editing one score from the list 
+- improve selection of the next input
+- make apperance and disappearance of players more seamless with animations
+- find/create better small-icon
+
+*/
+
 function App() {
   const playersContext = useContext(PlayersContext);
 

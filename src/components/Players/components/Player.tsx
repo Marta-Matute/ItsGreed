@@ -84,7 +84,13 @@ function Player({ player }: PlayerProps) {
       //alert("you need at least two players");
       setShowPopup(true);
     } else {
-      setPlayers((players) => players.filter((player) => player.index !== index));
+      setPlayers((players) => {
+        const updatedPlayers = players.filter((player) => player.index !== index);
+
+        const updatedPlayerRanks = updatePlayerRanks(updatedPlayers);
+
+        return updatedPlayerRanks;
+      });
     }
   };
 
@@ -124,7 +130,7 @@ function Player({ player }: PlayerProps) {
       <p className="total-score">
         <span style={{ fontSize: "0.6em" }}>
           {player.rank != null &&
-            player.totalScore > 0 &&
+            player.allScores.length > 0 &&
             (player.rank === 0
               ? "🥇"
               : player.rank === players.length - 1

@@ -2,6 +2,7 @@
   "name": "greed-score",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://marta-matute.github.io/ItsGreed",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -44,8 +45,4 @@
   "devDependencies": {
     "prettier": "3.3.3"
   }
-  {
-  "homepage": "https://marta-matute.github.io/ItsGreed"
-}
-
 }

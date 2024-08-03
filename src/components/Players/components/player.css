@@ -7,6 +7,7 @@
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, and color */
   border-radius: 5px;
+
 }
 
 .gray-icon {
@@ -64,14 +65,14 @@
   background-color: transparent;
   color:var(--primary-color);
   cursor: pointer;
-  width: 178px;
+  width: 185px;
 }
 
 .player-name-focused {
   /* Add your focused state styling here */
   border: 1px solid none;
   background: none;
-  width: 178px;
+  width: 185px;
   font-size: 40px;
   font-family: 'CooperBlack';
   color: var(--primary-color);
