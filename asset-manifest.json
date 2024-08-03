@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ItsGreed/static/css/main.8fe9c5d8.css",
+    "main.js": "/ItsGreed/static/js/main.25288034.js",
+    "static/js/453.8ac313e7.chunk.js": "/ItsGreed/static/js/453.8ac313e7.chunk.js",
+    "static/media/small-logo2.svg": "/ItsGreed/static/media/small-logo2.82717500b0d8b203f218d5905562828b.svg",
+    "static/media/COOPBL.TTF": "/ItsGreed/static/media/COOPBL.dbe0cbaa54b6ad6fa396.TTF",
+    "index.html": "/ItsGreed/index.html",
+    "main.8fe9c5d8.css.map": "/ItsGreed/static/css/main.8fe9c5d8.css.map",
+    "main.25288034.js.map": "/ItsGreed/static/js/main.25288034.js.map",
+    "453.8ac313e7.chunk.js.map": "/ItsGreed/static/js/453.8ac313e7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8fe9c5d8.css",
+    "static/js/main.25288034.js"
+  ]
+}
