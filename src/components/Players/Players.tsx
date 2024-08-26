@@ -56,3 +56,8 @@ export const Players = () => {
 };
 
 export default Players;
+
+// TO DO
+// Add final round warning
+// make sure all the turns are respected and show warning if one player has one less turn
+// allow changing the final goal
